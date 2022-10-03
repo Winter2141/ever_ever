@@ -1,0 +1,65 @@
+
+<script>
+
+	// Subscriptions Powered by ReCharge Payments: JavaScript
+	var rc_cart = {
+		customer:  {
+			{% if customer %}
+				email: '{{ customer.email | url_encode }}',
+			{% endif %}
+			default_address: {
+				{% if customer.default_address %}
+					first_name: '{{ customer.default_address.first_name | url_encode }}',
+					last_name: '{{ customer.default_address.last_name | url_encode }}',
+					address1: '{{ customer.default_address.address1 | url_encode }}',
+					address2: '{{ customer.default_address.address2 | url_encode }}',
+					city: '{{ customer.default_address.city | url_encode }}',
+					company: '{{ customer.default_address.company | url_encode }}',
+					country: '{{ customer.default_address.country | url_encode }}',
+					province: '{{ customer.default_address.province | url_encode }}',
+					phone: '{{ customer.default_address.phone | url_encode }}',
+					zip: '{{ customer.default_address.zip | url_encode }}'
+				{% endif %}
+			}
+		}
+	}
+	function return_params(object) {
+		var params = []
+		for (var property in object) {
+			if (object.hasOwnProperty(property) && object[property] != null) {
+				if (object[property].constructor == Object) { continue; }
+				params.push(property + '=' + object[property]);
+			}
+		}
+		return params;
+	}
+	function get_cart_token() {
+		try {
+			return ['cart_token=' + (document.cookie.match('(^|; )cart=([^;]*)')||0)[2]];
+		} catch (e) {
+			return []
+		}
+	}
+	function get_ga_linker() {
+		try {
+			return ['ga_linker=' + ga.getAll()[0].get('linkerParam')];
+		} catch (e) {
+			return []
+		}
+	}
+
+	function reChargeBuildCheckoutURL() {
+		// Build the Checkout URL
+		var checkout_url = 'https://checkout.rechargeapps.com/r/checkout?',
+			url_params = [
+				'myshopify_domain={{ shop.permanent_domain }}'
+			];
+		url_params = url_params
+			.concat(get_cart_token())
+			.concat(get_ga_linker())
+			.concat(return_params(rc_cart.customer))
+			.concat(return_params(rc_cart.customer.default_address));
+		return checkout_url + url_params.join('&');
+	}
+
+</script>

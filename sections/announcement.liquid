@@ -1,0 +1,32 @@
+{% schema %}
+  {
+    "name": "Announcement Bar",
+    "settings": [
+      {
+        "id": "hide",
+        "type": "checkbox",
+        "label": "Hide?"
+      },
+      {
+        "id": "message",
+        "type": "text",
+        "label": "Message Text"
+      }
+    ]
+  }
+{% endschema %}
+
+{% if section.settings.hide != true %}
+
+  <div class=" announcement section u-bgSkyBlue" id="announcement">
+    <div class=" announcement__inner t-center">
+      <p class="announcement__text" >{{ section.settings.message }}</p>
+    </div>
+    <div class="announcement__close" id="announcement-close"></div>
+  </div>
+
+  <script>
+    document.documentElement.classList.add('show-announcement')
+  </script>
+
+{% endif %}

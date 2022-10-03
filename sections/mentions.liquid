@@ -1,0 +1,62 @@
+{% schema %}
+  {
+    "name": "Mentions",
+    "settings": [
+      {
+        "id": "banner",
+        "type": "text",
+        "label": "Banner Text",
+        "default": "Mentions &"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "mention",
+        "name": "Mention",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Company Name"
+          },
+          {
+            "id": "logo",
+            "type": "image_picker",
+            "label": "Company Logo"
+          },
+          {
+            "id": "link-url",
+            "type": "url",
+            "label": "Link Url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Mentions",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}
+
+{% assign banner = section.settings.banner %}
+{% include "banner" %}
+
+<div class="section u-bgLightBlue u-vPad120">
+  <div class="section__inner">
+    <div class="u-hPad20 u-mhPad0">
+      <div class="logoGrid">
+        {% for block in section.blocks %}
+          <a class="logoGrid__cell" href="{{ block.settings.link-url }}">
+            <div class="image image--logo u-marginAuto">
+              <div class="image__circle image__circle--blue"></div>
+              <div class="image__inner" style="background-image: url({{ block.settings.logo | img_url: '500x' }})"></div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

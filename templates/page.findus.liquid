@@ -1,0 +1,30 @@
+{% assign page_banner = "FIND US & " %}
+{%- include 'page-banner' -%}
+
+<div class="section u-bgLightBlue u-vPad160">
+  <div class="section__inner t-colorMainBlue">
+
+    <div class="g-span6 g-offset2 u-mb120">
+      <div class="u-mb40">
+        <h2 class="t-sectionTitle t-sectionTitleSmall t-size50">Ever & Ever Is available at these retailers</h2>
+      </div>
+      <div class="t-center">
+        <a class="button button--mainBlue u-marginAuto" href="/">Buy Now Online</a>
+      </div>
+    </div>
+    <div class="u-hPad20">
+      <div class="logoGrid">
+        {% for i in (1..12) %}
+          <div class="logoGrid__cell">
+            <div class="image image--logo u-marginAuto">
+              <div class="image__circle"></div>
+              <div class="image__inner" style="background-image: url({{ 'brand-logo.png' | asset_url}})"></div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include "footer" %}

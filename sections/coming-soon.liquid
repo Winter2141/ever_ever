@@ -1,0 +1,32 @@
+{% schema %}
+  {
+    "name": "Coming Soon",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title"
+      },
+      {
+        "id": "sentence",
+        "type": "textarea",
+        "label": "Intro sentence"
+      }
+    ]
+  }
+{% endschema %}
+
+<div class="section u-bgSkyBlue u-vPad180">
+  <div class="section__inner">
+    <div class="g-span6 g-offset2 u-hPad60 u-mhPad0">
+      <div class="u-mb40">
+        <h2 class="t-sectionTitle u-mb20">{{ section.settings.title }}</h2>
+        <p class="t-bodyLarge t-center">{{ section.settings.sentence }}</p>
+      </div>
+      {% assign newsletter_class = "newsletterForm--large" %}
+      {% assign newsletter_color = "skyBlue" %}
+      {% assign newsletter_id = "home-cta" %}
+      {% include 'newsletter' %}
+    </div>
+  </div>
+</div>

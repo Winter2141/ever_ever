@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="exit">
+<head>
+  <meta name="google-site-verification" content="s1JPazcc_xB4wbSMVAJlNUsLg7Fo4VKM9kraaPSRKjA" />
+  <title>{{ page_title }}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="title" property="og:title" content="{{ page_title | escape }}">
+  <meta name="description" property="og:description" content="{{ page_description | escape }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  {{ content_for_header }} <!-- Header hook for plugins -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{'favicon-32x32.png' | asset_url }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{'favicon-96x96.png' | asset_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{'favicon-16x16.png' | asset_url }}">
+  <link type="text/css" href="{{ 'styles.scss.css' | asset_url }}" rel="stylesheet">
+  <!-- Needed for Klaviyo -->
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+
+  <!-- Needed for Recharge -->
+  <script src="//rechargeassets-bootstrapheroes-rechargeapps.netdna-ssl.com/static/js/rcWidget.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Marketing Platform -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=DC-8444036"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'DC-8444036');
+  </script>
+  <!-- End of global snippet: Please do not remove -->
+  
+  <!-- Facebook Pixel Code added by J. Glatz on 7/9/2019 -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '344140776481058'); 
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" src="https://www.facebook.com/tr?id=344140776481058&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Facebook Pixel Code -->
+  
+</head>
+<body >
+  <div class="pageCover" style="position:fixed;top: 0;left: 0;width: 100%;height: 100vh;background: white;z-index: 100;"></div>
+
+  <div data-barba="wrapper" id="content">
+    <main data-barba="container" role="main" class="content">
+      {{ content_for_layout }}
+    </main>
+  </div>
+
+  {% section "navigation" %}
+  {% section "newsletter-popup" %}
+
+  <script src="https://unpkg.com/@barba/core"></script>
+  {{ 'scripts.js' | asset_url | script_tag }}
+
+  {% include 'subscription-theme-footer-custom' %}
+</body>
+</html>

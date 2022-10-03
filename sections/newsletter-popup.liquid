@@ -1,0 +1,72 @@
+{% schema %}
+  {
+    "name": "Newsletter Popup",
+    "settings": [
+      {
+        "id": "hide",
+        "type": "checkbox",
+        "label": "Hide?"
+      },
+      {
+        "id": "message",
+        "type": "text",
+        "label": "Heading Text"
+      },
+      {
+        "id": "submessage",
+        "type": "text",
+        "label": "Subheading Text"
+      },
+      {
+        "id": "success-message",
+        "type": "text",
+        "label": "Success Message"
+      }
+    ]
+  }
+{% endschema %}
+
+
+<div id="custom_flyout" class="klaviyo_flyout klaviyo_right popout" >
+  <div class="klaviyo_inner popout__inner">
+    <a href="#" class="klaviyo_close_flyout klaviyo_header_close popout__close"></a>
+    <p class="popout__heading">{{section.settings.message}}</p>
+    <p class="popout__subheading">{{section.settings.submessage}}</p>
+    <form action="" method="POST" novalidate="novalidate" class="klaviyo_subscription_form newsletterForm">
+      <input type="hidden" name="g" value="Pep62N" />
+      <div class="klaviyo_inline_fieldset newsletterForm__inner">
+        <input class="newsletterForm__email" type="email" name="email" placeholder="Your email address" />
+        <div class="klaviyo_form_actions newsletterForm__submitWrap water water--mainBlue">
+          <div class="water__inner"></div>
+          <button type="submit" class="klaviyo_submit_button newsletterForm__submit">Enter</button>
+        </div>
+      </div>
+      <div class="error_message newsletterForm__error" style="display:none;"></div>
+   </form>
+   <div class="klaviyo_messages">
+     <div class="success_message newsletterForm__success" style="display:none;">
+       {{section.settings.sucess-message}}
+     </div>
+   </div>
+ </div>
+</div>
+
+<script>
+ KlaviyoSubscribe.attachToForms(jQuery('#custom_flyout' + ' .klaviyo_subscription_form'), {
+   custom_success_message: true,
+   success: function ($form) {
+     $form.hide();
+     KlaviyoSubscribe.setClosedModalCookie();
+     gtag('event', 'conversion', {
+      'allow_custom_scripts': true,
+      'send_to': 'DC-8444036/btnclick/emailbtn+standard'
+     });
+   }
+ });
+ KlaviyoSubscribe.attachToFlyout('#custom_flyout', {
+   delay: 0,
+   delay_scroll: 0,
+   //ignore_cookie: true, //remove before putting live
+   position: 'right'
+ });
+</script>

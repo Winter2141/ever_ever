@@ -1,0 +1,127 @@
+{% schema %}
+  {
+    "name": "Products",
+    "settings": [
+      {
+        "id": "banner",
+        "type": "text",
+        "label": "Banner Text",
+        "default": "Products &"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product Section",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Title"
+          },
+          {
+            "id": "paragraph",
+            "type": "textarea",
+            "label": "Paragraph"
+          },
+          {
+            "id": "link-label",
+            "type": "text",
+            "label": "Link Label"
+          },
+          {
+            "id": "link-url",
+            "type": "url",
+            "label": "Link URL"
+          },
+          {
+            "id": "bottle-image",
+            "type": "image_picker",
+            "label": "Bottle Image"
+          },
+          {
+            "id": "bottle-offset",
+            "type": "range",
+            "min": -50,
+            "max": 50,
+            "step": 1,
+            "unit": "%",
+            "label": "Bottle Horizontal Offset",
+            "default": 0
+          },
+          {
+            "id": "bottle-scale",
+            "type": "range",
+            "min": -50,
+            "max": 50,
+            "step": 1,
+            "unit": "%",
+            "label": "Bottle Scale",
+            "default": 0
+          },
+          {
+            "id": "bg-video",
+            "type": "text",
+            "label": "Background Video Filename (needs to be contained in /assets folder)"
+          },
+          {
+            "id": "bg-color",
+            "type": "color",
+            "label": "Background Color"
+          },
+          {
+            "id": "product-left",
+            "type": "checkbox",
+            "label": "Product on left?"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Products",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}
+
+{% assign banner = section.settings.banner %}
+{% include "banner" %}
+
+
+{% for block in section.blocks %}
+  <div class="section u-vPad200" style="background-color: {{block.settings.bg-color}}">
+    {% if block.settings.product-left %}
+      {% assign side = "productBottle--left" %}
+      {% assign grid = "g-offset5" %}
+    {% else %}
+      {% assign side = "productBottle--right" %}
+      {% assign grid = "" %}
+    {% endif %}
+    <div class="productBottle {{side}}">
+      <!-- <div class="productBottle__circle"></div> -->
+      <video class="productBottle__illustration" src="{{ block.settings.bg-video | asset_url }}" autoplay loop playsinline muted></video>
+      {% assign scale = block.settings.bottle-scale | divided_by: 100.0 | plus: 1.0 %}
+      <div class="productBottle__bottle" style="background-image: url({{ block.settings.bottle-image | img_url: '1400x' }}); transform: translateX({{block.settings.bottle-offset}}%) scale({{scale}})"></div>
+    </div>
+    <div class="section__inner">
+      <div class="g-span5 {{grid}} u-hPad60 u-mhPad0">
+        <div class="u-vPad40 u-borderTop u-borderWhite">
+          <h2 class="t-sectionTitle">{{ block.settings.title }}</h2>
+        </div>
+        <div class="u-vPad25 u-borderTop u-borderBottom u-borderWhite u-mb40">
+          {% assign dropcap = block.settings.paragraph | slice: 0 %}
+          <p class="t-body"><span class="t-dropcap">{{ dropcap }}</span>{{block.settings.paragraph | remove_first: dropcap}}</p>
+        </div>
+        <div class="t-center u-mb10">
+          <a class="button u-marginAuto water" href="{{ block.settings.link-url }}">
+            <span class="water__inner"></span>
+            <span class="button__inner">{{ block.settings.link-label }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}

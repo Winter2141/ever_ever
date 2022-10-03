@@ -1,0 +1,241 @@
+
+{%- if collection.handle == "sparkling" -%}
+  <!--
+  Event snippet for Sparkling Water Product Page on http://drinkeverandever.com/sparkling: Please do not remove.
+  Place this snippet on pages with events you’re tracking.
+  Creation date: 05/30/2019
+  -->
+  <script>
+    gtag('event', 'conversion', {
+      'allow_custom_scripts': true,
+      'send_to': 'DC-8444036/eevisit/sparklpg+standard'
+    });
+  </script>
+  <noscript>
+  <img src="https://ad.doubleclick.net/ddm/activity/src=8444036;type=eevisit;cat=sparklpg;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;ord=1?" width="1" height="1" alt=""/>
+  </noscript>
+  <!-- End of event snippet: Please do not remove -->
+{%- elsif collection.handle == "still" -%}
+  <!--
+  Event snippet for Still Water Product Page on http://drinkeverandever.com/still: Please do not remove.
+  Place this snippet on pages with events you’re tracking.
+  Creation date: 05/30/2019
+  -->
+  <script>
+    gtag('event', 'conversion', {
+      'allow_custom_scripts': true,
+      'send_to': 'DC-8444036/eevisit/stillpg+standard'
+    });
+  </script>
+  <noscript>
+  <img src="https://ad.doubleclick.net/ddm/activity/src=8444036;type=eevisit;cat=stillpg;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;ord=1?" width="1" height="1" alt=""/>
+  </noscript>
+  <!-- End of event snippet: Please do not remove -->
+{%- endif -%}
+
+
+{% assign active = 2 %}
+{% assign offset = collection.products.size %}
+{% assign count = collection.products.size | times: 2 %}
+
+<div class="productPage" data-active="{{active}}" data-count="{{count}}">
+  <div class="productPage__top">
+
+      {% for product in collection.products %}
+        {% assign index = forloop.index0 %}
+        {% assign page_banner = product.title | upcase | replace: "WATER", "&" %}
+        <div class="bannerText bannerText--product productPage__banner {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}">
+          <div class="bannerText__inner">
+            <div class="bannerText__block">{{ page_banner }}</div>
+            <div class="bannerText__block">{{ page_banner }}</div>
+            <div class="bannerText__block">{{ page_banner }}</div>
+            <div class="bannerText__block">{{ page_banner }}</div>
+            <div class="bannerText__block">{{ page_banner }}</div>
+            <div class="bannerText__block">{{ page_banner }}</div>
+          </div>
+        </div>
+      {% endfor %}
+      {% for product in collection.products %}
+        {% assign index = forloop.index0 | plus: offset %}
+        {% assign page_banner = product.title | upcase | replace: "WATER", "&" %}
+        <div class="bannerText bannerText--product productPage__banner {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}">
+          <div class="bannerText__inner">
+            <div class="bannerText__block">{{ page_banner }}</div>
+            <div class="bannerText__block">{{ page_banner }}</div>
+            <div class="bannerText__block">{{ page_banner }}</div>
+            <div class="bannerText__block">{{ page_banner }}</div>
+            <div class="bannerText__block">{{ page_banner }}</div>
+            <div class="bannerText__block">{{ page_banner }}</div>
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+  <div class="productPage__bottom">
+    <div class="productPage__colors">
+        {% for product in collection.products %}
+          {% assign index = forloop.index0 %}
+          <div class="productPage__colorSlide {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}" style="background: {{ product.metafields.styles.bg-color }}"></div>
+        {% endfor %}
+        {% for product in collection.products %}
+          {% assign index = forloop.index0 | plus: offset %}
+          <div class="productPage__colorSlide {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}" style="background: {{ product.metafields.styles.bg-color }}"></div>
+        {% endfor %}
+    </div>
+
+    <div class="productPage__bottles">
+        {% for product in collection.products %}
+          {% assign index = forloop.index0 %}
+          <div class="productPage__bottleSlide {% if index == active %}is-active{% endif %}" style="background-image: url({{product.featured_image || img_url: 'x1200'}})" data-product-index="{{ index }}"></div>
+        {% endfor %}
+        {% for product in collection.products %}
+          {% assign index = forloop.index0 | plus: offset %}
+          <div class="productPage__bottleSlide {% if index == active %}is-active{% endif %}" style="background-image: url({{product.featured_image || img_url: 'x1200'}})" data-product-index="{{ index }}"></div>
+        {% endfor %}
+    </div>
+    <div class="productPage__dragEl" id="dragel">
+
+      <div class="productPage__dragCursor">
+        {% for product in collection.products %}
+          {% assign index = forloop.index0 %}
+          <div class="productPage__dragBG {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}" style="background: {{ product.metafields.styles.bg-color }}"></div>
+        {% endfor %}
+        {% for product in collection.products %}
+          {% assign index = forloop.index0 | plus: offset %}
+          <div class="productPage__dragBG {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}" style="background: {{ product.metafields.styles.bg-color }}"></div>
+        {% endfor %}
+        <span>Drag</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section__inner">
+        <div class="productPage__info" id="product-info">
+            {% for product in collection.products %}
+              {% assign index = forloop.index0 %}
+              <div class="productPage__infoSlide {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}">
+                <h2 class="productPage__title u-mb15">{{ product.title }}</h2>
+                <p class="productPage__subtext u-mb05">  {{ product.metafields.description.size }} </p>
+                <div class="productPage__subtext u-mb10" id="product-flavor">{{product.description}}</div>
+                <span class="productPage__link u-mb20 show-nutrition">Nutrition Facts</span>
+                <form method="post" action="/cart/add" enctype="multipart/form-data" class="u-mb15 add-to-cart" data-productid="{{product.id}}">
+                  {% if product.available %}{% include 'subscription-product-custom' %}{% endif %}
+                  {% comment %}
+                  {% if product.available %}
+                    {% if product.handle == 'original-sparkling-water' %}
+                      {% include 'rtxn_pdp_selling_plans' %}
+                    {% else %}
+                      {% include 'subscription-product-custom' %}
+                    {% endif %}
+                  {% endif %}
+                  {% endcomment %}
+                  <input type="hidden" name="id" value="{{ product.variants.first.id }}" data-productid="{{product.id}}"/>
+                  {% if product.available %}
+                    <div class="u-flex">
+                      <input class="button button--thin u-mr20" type="submit" value="Add to cart" class="button__inner" />
+                      <div class="number">
+                        <span class="number__label">QTY</span>
+                        <span class="number__inc number__minus"></span>
+                        <input class="number__input" min="1" type="number" id="quantity" name="quantity" value="1"/>
+                        <span class="number__inc number__plus"></span>
+                      </div>
+                    </div>
+                  {% else condition %}
+                    <p>Sold Out</p>
+                  {% endif %}
+
+                </form>
+
+                {% section 'shipping' %}
+
+              </div>
+            {% endfor %}
+            {% for product in collection.products %}
+              {% assign index = forloop.index0 | plus: offset %}
+              <div class="productPage__infoSlide {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}">
+                <h2 class="productPage__title u-mb15">{{ product.title }}</h2>
+                <p class="productPage__subtext u-mb05"> {{ product.metafields.description.size }}</p>
+                <div class="productPage__subtext u-mb10" id="product-flavor">{{product.description}}</div>
+                <span class="productPage__link u-mb20 show-nutrition">Nutrition Facts</span>
+                <form method="post" action="/cart/add" enctype="multipart/form-data" class="u-mb15 add-to-cart" data-productid="{{product.id}}">
+                  {% comment %}
+                  {% if product.available %}{% include 'subscription-product-custom' %}{% endif %}
+                  {% endcomment %}
+                  {% if product.available %}
+                    {% if product.handle == 'original-sparkling-water' %}
+                      {% include 'rtxn_pdp_selling_plans' %}
+                    {% else %}
+                      {% include 'subscription-product-custom' %}
+                    {% endif %}
+                  {% endif %}
+                  <input type="hidden" name="id" value="{{ product.variants.first.id }}" data-productid="{{product.id}}"/>
+                  {% if product.available %}
+                    <div class="u-flex">
+                      <input class="button button--thin u-mr20" type="submit" value="Add to cart" class="button__inner" />
+                      <div class="number">
+                        <span class="number__label">QTY</span>
+                        <span class="number__inc number__minus"></span>
+                        <input class="number__input" min="1" type="number" id="quantity" name="quantity" value="1"/>
+                        <span class="number__inc number__plus"></span>
+                      </div>
+                    </div>
+                  {% else condition %}
+                    <p>Sold Out</p>
+                  {% endif %}
+
+                </form>
+
+                {% section 'shipping' %}
+
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="productPage__clickNav product-next">
+        {% for product in collection.products %}
+          {% assign index = forloop.index0 %}
+          {% assign image_index = forloop.index0 | plus: 1 %}
+          {% if image_index >= offset %}
+            {% assign image_index = 0 %}
+          {% endif %}
+          <div class="productPage__clickItem {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}">
+            <p class="productPage__clickLabel">See {{ collection.products[image_index].title }}</p>
+            <div class="productPage__clickImage" style="background-image: url({{collection.products[image_index].featured_image || img_url: 'x200'}})"></div>
+          </div>
+        {% endfor %}
+        {% for product in collection.products %}
+          {% assign index = forloop.index0 | plus: offset %}
+          {% assign image_index = forloop.index0 | plus: 1 %}
+          {% if image_index >= offset %}
+            {% assign image_index = 0 %}
+          {% endif %}
+          <div class="productPage__clickItem {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}">
+            <p class="productPage__clickLabel">See {{ collection.products[image_index].title }}</p>
+            <div class="productPage__clickImage" style="background-image: url({{collection.products[image_index].featured_image || img_url: 'x200'}})"></div>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div>
+  {% for product in collection.products %}
+    {% assign index = forloop.index0 %}
+    <div class="productPage__nutrition {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}" style="background: {{ product.metafields.styles.bg-color }}">
+      <div class="productPage__nutritionHide hide-nutrition"></div>
+      <img src="{{ 'nutrition.png' | asset_url }}"/>
+    </div>
+  {% endfor %}
+  {% for product in collection.products %}
+    {% assign index = forloop.index0 | plus: offset %}
+    <div class="productPage__nutrition {% if index == active %}is-active{% endif %}" data-product-index="{{ index }}" style="background: {{ product.metafields.styles.bg-color }}">
+      <div class="productPage__nutritionHide hide-nutrition"></div>
+      <img src="{{ 'nutrition.png' | asset_url }}"/>
+    </div>
+  {% endfor %}
+</div>
+
+
+<!-- <div class="productPage__nav">
+  <span>All sparkling flavors</span>
+  <span>All still flavors</span>
+</div> -->

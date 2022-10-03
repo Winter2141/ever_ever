@@ -1,0 +1,12 @@
+{% assign page_banner = page_title | upcase | append: " & " %}
+{% include 'page-banner' %}
+<div class="section">
+  <div class="section__inner u-vPad180">
+    <div class="g-span6 legal">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+
+
+{% include "footer" %}

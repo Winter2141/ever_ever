@@ -1,0 +1,64 @@
+{% schema %}
+  {
+    "name": "FAQs",
+    "settings": [
+    ],
+    "blocks": [
+      {
+        "type": "faq",
+        "name": "FAQ",
+        "settings": [
+          {
+            "id": "title",
+            "type": "textarea",
+            "label": "Question"
+          },
+          {
+            "id": "answer",
+            "type": "richtext",
+            "label": "Answer"
+          },
+          {
+             "type": "select",
+             "id": "category",
+             "options": [
+                { "value": "1", "label": "About Ever & Ever"},
+                { "value": "2", "label": "About Orders"},
+                { "value": "3", "label": "About Subscriptions"}
+             ],
+             "label": "Category",
+             "default": "1"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+
+<div class="section u-bgLightBlue u-vPad160">
+  <div class="section__inner t-colorMainBlue u-flex">
+    <div class="g-span3 t-colorMainBlue u-hideMobile">
+      <h4 class="t-smallHeading u-mb20">Categories</h4>
+      <h4 class="t-sideHeading u-mb30 faqCategory" data-category="1"><span>About Ever & Ever</span></h4>
+      <h4 class="t-sideHeading u-mb30 faqCategory" data-category="2"><span>About Orders</span></h4>
+      <h4 class="t-sideHeading u-mb30 faqCategory" data-category="3"><span>About Subscriptions</span></h4>
+    </div>
+
+    <div class="g-span5 g-offset1 u-vPad20">
+      {% for block in section.blocks %}
+        <div class="accordion faqQuestion" data-category="{{ block.settings.category }}">
+          <div class="accordion__label">
+            <h3 class="t-faqHeading">{{ block.settings.title }}</h3>
+          </div>
+          <div class="accordion__content">
+            <div class="accordion__contentInner">
+              <div class="t-colorGrey t-bodyFaq">{{ block.settings.answer}}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>

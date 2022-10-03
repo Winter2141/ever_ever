@@ -1,0 +1,467 @@
+{
+  "current": {
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#1e9bee",
+    "checkout_button_color": "#56aada",
+    "checkout_error_color": "#e32c2b",
+    "color_bg": "#ffffff",
+    "color_text": "#000000",
+    "sections": {
+      "coming-soon": {
+        "type": "coming-soon",
+        "settings": {
+          "title": "Please be patient.",
+          "sentence": "Aluminum has to be born and re-born and re-re-re-born many times before it can get to become a bottle-can of Ever & Ever water, which it will, very soon. \n\nIn the meantime, if you find yourself thirsting for Ever & Ever updates, please enter your email below.\n\nThank you. And sorry."
+        }
+      },
+      "1557828501967": {
+        "type": "hero",
+        "settings": {
+          "blurb": "Thanks to those who recycle, nearly 75% of all the aluminum ever produced is still in use. When used properly and recycled, this bottle-can may go on to become wind chimes, a flagpole, a filing cabinet, a pie tin, and then Ever & Ever once again."
+        }
+      },
+      "1557829923697": {
+        "type": "products",
+        "blocks": {
+          "1557835567986": {
+            "type": "product",
+            "settings": {
+              "title": "Still Water",
+              "paragraph": "Our water comes from infinitely renewable sources, undergoes a purification process called reverse osmosis, is packed with electrolytes, and has a pH balance of 7.4. Because your body, much like our planet, relies on clean, sustainable water.",
+              "link-label": "Buy Now",
+              "link-url": "shopify:\/\/collections\/still",
+              "bottle-image": "shopify:\/\/shop_images\/Ever_and_Ever_Still_Render_WITH_Shadow_FINAL_1400x-min.png",
+              "bottle-offset": 14,
+              "bottle-scale": -19,
+              "bg-video": "still_illust_light.mp4",
+              "bg-color": "#56aada",
+              "product-left": false
+            }
+          },
+          "1557835674131": {
+            "type": "product",
+            "settings": {
+              "title": "Sparkling Water",
+              "paragraph": "Similar to its non-carbonated counterpart, our crisp sparkling water comes from infinitely renewable sources, and is also packed with electrolytes. You may not be able to notice the extremely nuanced taste of electrolytes, but your body can.",
+              "link-label": "Buy Now",
+              "link-url": "shopify:\/\/collections\/sparkling",
+              "bottle-image": "shopify:\/\/shop_images\/Ever_and_Ever_Sparkling_Render_WITH_Shadow_FINAL_1400x-min.png",
+              "bottle-offset": -8,
+              "bottle-scale": -19,
+              "bg-video": "sparkling_illust_light.mp4",
+              "bg-color": "#2d70af",
+              "product-left": true
+            }
+          }
+        },
+        "block_order": [
+          "1557835567986",
+          "1557835674131"
+        ],
+        "settings": {
+          "banner": "Products &"
+        }
+      },
+      "1557830296811": {
+        "type": "aluminum",
+        "blocks": {
+          "1557837310241": {
+            "type": "fact",
+            "settings": {
+              "fact-icon": "shopify:\/\/shop_images\/recycle.gif",
+              "fact-text": "Aluminum is infinitely recyclable."
+            }
+          },
+          "1557837461363": {
+            "type": "fact",
+            "settings": {
+              "fact-icon": "shopify:\/\/shop_images\/can.gif",
+              "fact-text": "Cans are made from an average of 70% recycled material."
+            }
+          },
+          "1557837438973": {
+            "type": "fact",
+            "settings": {
+              "fact-icon": "shopify:\/\/shop_images\/infinity.gif",
+              "fact-text": "Nearly 75% of all aluminum produced since 1888 is still in use today."
+            }
+          },
+          "1557837484933": {
+            "type": "fact",
+            "settings": {
+              "fact-icon": "shopify:\/\/shop_images\/cal.gif",
+              "fact-text": "Cans go from recycling bin back to store shelves within 60 days."
+            }
+          }
+        },
+        "block_order": [
+          "1557837310241",
+          "1557837461363",
+          "1557837438973",
+          "1557837484933"
+        ],
+        "settings": {
+          "banner": "Aluminum &",
+          "title": "An ode to aluminum",
+          "paragraph": "Ever & Ever is a love letter to aluminum, the everlasting metal that has been around for approximately forever and will be around for approximately another forever, taking whatever shape humans require of it, silently, selflessly, without ego or waste, unlike plastic, which is a freeloader that’s completely comfortable lying around in an ocean or landfill doing nothing.\nMaybe you’ll become attached to a particular Ever & Ever bottle-can. Maybe you’ll take it with you everywhere you go, using it and reusing it and re-re-re-reusing it, with water from kitchen sinks and public drinking fountains and water coolers. Maybe you’ll even become overly attached to your bottle-can, giving it a name like Pablo or Samantha, or something more intimate, like Jake. \nBut then, maybe, sadly, you’ll leave it somewhere, like on your office desk or a dentist’s waiting room, and someone, good intentioned but simple and misguided, will take it and drop it into the recycling bin. Just like that. And maybe as suddenly as this aluminum bottle-can entered your life, it will leave it. And there will be an aluminum bottle-can–shaped void in your world.\nThough you may choose to mourn for Jake, you may be relieved to hear that it takes only 60 days for aluminum bottle-cans to return to the supermarket shelf. So, soon enough, your bottle-can will be right back where you found it in the first place, ready to provide more of the same companionship and service that you’ve come to expect from it. Unless, of course, it’s not there.\nMaybe you’ll be walking down a street you haven’t walked down before and hear the familiar soft, dulcet tones of aluminum clinking against aluminum. And you’ll follow the sound into someone’s back garden, where you will find a set of hanging wind chimes that were once your bottle-can. You’ll feel a surge of relief as you climb atop an Adirondack chair to pull the wind chimes down, even as the owner of the home yells at you to stop. And then a bittersweet goodbye as you drop the wind chimes into a recycling bin, knowing that they'll be born and reborn and re-re-re-re-reborn, experiencing many richly varied lives, before they will, one day, end up ready to perform another tour of duty as your Ever & Ever bottle-can.",
+          "link-label": "Read More"
+        }
+      },
+      "1557830312995": {
+        "type": "lonely-whale",
+        "settings": {
+          "banner": "Moral Compass &",
+          "paragraph": "Plastic isn’t infinitely recyclable like aluminum is. In fact, 91% of it will never get recycled, which is why 18 billion pounds of it end up in our oceans every year, leading to the deaths of hundreds of thousands of marine animals. And by 2050, the plastic in our oceans is expected to outweigh all fish. We’ve promised to not be those people who bring up sobering facts at every occasion, but it’s often all too necessary, which is why we’re thrilled to partner with Lonely Whale, an incubator for ideas that will help alleviate some of the ocean’s most dire problems, so that, one day, there will be no need for those people to ever bring up sobering facts about the ocean ever again.",
+          "logo": "shopify:\/\/shop_images\/LW-Logo.png",
+          "link-label": "Visit Lonely Whale",
+          "link-url": "https:\/\/www.lonelywhale.org\/",
+          "video": "bottle-min.mp4"
+        }
+      },
+      "1557830447074": {
+        "type": "mentions",
+        "blocks": {
+          "1559739720019": {
+            "type": "mention",
+            "settings": {
+              "title": "BEVNET",
+              "logo": "shopify:\/\/shop_images\/BevNET_logo_white.png",
+              "link-url": "https:\/\/www.bevnet.com\/news\/2019\/all-market-launches-eco-friendly-aluminum-bottle-water-brand-ever-ever"
+            }
+          },
+          "1559739676476": {
+            "type": "mention",
+            "settings": {
+              "title": "Fast Company",
+              "logo": "shopify:\/\/shop_images\/Fast-Company.png",
+              "link-url": "https:\/\/www.fastcompany.com\/90358641\/lonely-whale-and-vita-coco-have-a-solution-to-the-worlds-plastic-water-bottle-problem"
+            }
+          },
+          "1560318308450": {
+            "type": "mention",
+            "settings": {
+              "title": "Elle",
+              "logo": "shopify:\/\/shop_images\/28-280632_jalouse-david-saada-best-lounges-in-miami-chef.png",
+              "link-url": "https:\/\/www.elle.com\/beauty\/makeup-skin-care\/g27813466\/world-ocean-day-2019-beauty\/"
+            }
+          },
+          "1560319280514": {
+            "type": "mention",
+            "settings": {
+              "title": "Forbes",
+              "logo": "shopify:\/\/shop_images\/forbes-logo-black-and-white.png",
+              "link-url": "https:\/\/www.instagram.com\/p\/ByfySu1gERy\/"
+            }
+          }
+        },
+        "block_order": [
+          "1559739720019",
+          "1559739676476",
+          "1560318308450",
+          "1560319280514"
+        ],
+        "settings": {
+          "banner": "Mentions &"
+        }
+      },
+      "faq": {
+        "type": "faq",
+        "blocks": {
+          "1558111869122": {
+            "type": "faq",
+            "settings": {
+              "title": "Why isn’t Ever & Ever available at my beverage purveyor of choice?",
+              "answer": "<p>That seems like a question for the owner of the store. Politely request to speak with him or her, prepared with questions you&rsquo;d like to ask. &ldquo;Are you aware that plastic is clogging up our oceans at an extremely alarming pace? Did you know that aluminum, when properly recycled, never ends up in oceans? That it&rsquo;s infinitely recyclable? Do you know about Ever &amp; Ever, a water that comes in aluminum bottle-cans, which, coincidentally, would look great in your water section?&rdquo;<\/p>",
+              "category": "1"
+            }
+          },
+          "1558112209076": {
+            "type": "faq",
+            "settings": {
+              "title": "Is there a way to find out what aluminum objects my bottle-can will go on to become?",
+              "answer": "<p>We&rsquo;re afraid not. Recycling, much to our constant dismay, doesn&rsquo;t pay much credence to the concept of individuality.<\/p>",
+              "category": "1"
+            }
+          },
+          "1558112229004": {
+            "type": "faq",
+            "settings": {
+              "title": "I can’t choose between still or sparkling water. Will you help me choose?",
+              "answer": "<p>On principle, we refuse to take a side on such a personal matter, but we would like to reassure you that, however you choose, you&rsquo;ll end up refreshed and with an empty bottle-can that can be recycled into something else.<\/p>",
+              "category": "1"
+            }
+          },
+          "1558112290938": {
+            "type": "faq",
+            "settings": {
+              "title": "What is your shipping policy?",
+              "answer": "<p>We offer free shipping on all orders in the U.S.<\/p>",
+              "category": "2"
+            }
+          },
+          "1558112308189": {
+            "type": "faq",
+            "settings": {
+              "title": "Do you ship to P.O. boxes?",
+              "answer": "<p>Unfortunately, we do not.<\/p>",
+              "category": "2"
+            }
+          },
+          "1558112330172": {
+            "type": "faq",
+            "settings": {
+              "title": "Do you ship to remote islands accessible only by longboat?",
+              "answer": "<p>For the last time, Frank, no.<\/p>",
+              "category": "2"
+            }
+          },
+          "1558112356914": {
+            "type": "faq",
+            "settings": {
+              "title": "How do I track my order?",
+              "answer": "<p>You&rsquo;ll receive a tracking link in your confirmation email. If that doesn&rsquo;t satisfy your thirst for shipping information, we suggest contacting us at <a href=\"mailto:hello@drinkeverandever.com\" title=\"mailto:hello@drinkeverandever.com\">hello@drinkeverandever.com<\/a>.<\/p>",
+              "category": "2"
+            }
+          },
+          "1558112386791": {
+            "type": "faq",
+            "settings": {
+              "title": "How long will it take for my Ever & Ever to arrive?",
+              "answer": "<p>Typically within 10 days of ship date or approximately .0000000000000000000000000000000000001% of aluminum&rsquo;s life span.<\/p>",
+              "category": "2"
+            }
+          },
+          "1558112406791": {
+            "type": "faq",
+            "settings": {
+              "title": "What is your return policy?",
+              "answer": "<p>If your order was damaged in transit, or if you received the wrong order, reach out to <a href=\"mailto:hello@drinkeverandever.com\">hello@drinkeverandever.com<\/a> and we&rsquo;ll get you sorted. Otherwise, we don&rsquo;t accept returns. If, for whatever reason, you are unsatisfied with your Ever &amp; Ever, may we recommend passing it along to a friend or family member or coworker who often drinks from single-use plastic water bottles, proselytizing to them the many merits of aluminum?<\/p>",
+              "category": "2"
+            }
+          },
+          "1558112456470": {
+            "type": "faq",
+            "settings": {
+              "title": "What is an Ever & Ever subscription?",
+              "answer": "<p>Much like the aluminum it is made of, Ever &amp; Ever is best enjoyed as a cycle that keeps going and going. A subscription is ideal if you want to keep your home or office fridge stocked with Ever &amp; Ever, in perpetuity. To sign up, select the &ldquo;subscription&rdquo; option on the product page when checking out.<\/p>",
+              "category": "3"
+            }
+          },
+          "1558112470775": {
+            "type": "faq",
+            "settings": {
+              "title": "How do I change the billing method on my subscription?",
+              "answer": "<p>Log in to your customer account with your email address. On the Account page, click on Subscriptions, then click on Billing Information.<\/p>",
+              "category": "3"
+            }
+          },
+          "1558112486993": {
+            "type": "faq",
+            "settings": {
+              "title": "How do I change my shipping address?",
+              "answer": "<p>On the Account page, click on Orders, then My Subscriptions, then Change shipping address.<\/p>",
+              "category": "3"
+            }
+          },
+          "1558112512988": {
+            "type": "faq",
+            "settings": {
+              "title": "How do I cancel my subscription?",
+              "answer": "<p>If you decide to end your subscription, you can cancel via the Account page. Before doing so, please picture sad seals and fish and whales swimming among plastic, as to induce a guilt trip that may sway you from canceling.<\/p>",
+              "category": "3"
+            }
+          },
+          "1558112530581": {
+            "type": "faq",
+            "settings": {
+              "title": "How much money do I save by doing a subscription?",
+              "answer": "<p>You save 10% per case or $2.39 per case. That adds up. You can buy a case of Ever &amp; Ever with that money.<\/p>",
+              "category": "3"
+            }
+          },
+          "1558112548653": {
+            "type": "faq",
+            "settings": {
+              "title": "How can I contact Ever & Ever?",
+              "answer": "<p>We are available to respond to all of your qualms, concerns, and queries at&nbsp;<a href=\"\/pages\/contact\" title=\"Contact\">hello@drinkeverandever.com<\/a>.<\/p>",
+              "category": "3"
+            }
+          },
+          "1558112567441": {
+            "type": "faq",
+            "settings": {
+              "title": "I love you?",
+              "answer": "<p>Please, not here. Not now.<\/p>",
+              "category": "3"
+            }
+          }
+        },
+        "block_order": [
+          "1558111869122",
+          "1558112209076",
+          "1558112229004",
+          "1558112290938",
+          "1558112308189",
+          "1558112330172",
+          "1558112356914",
+          "1558112386791",
+          "1558112406791",
+          "1558112456470",
+          "1558112470775",
+          "1558112486993",
+          "1558112512988",
+          "1558112530581",
+          "1558112548653",
+          "1558112567441"
+        ],
+        "settings": {}
+      },
+      "contact": {
+        "type": "contact",
+        "settings": {
+          "title1": "Get in Touch",
+          "email1": "hello@drinkeverandever.com",
+          "title2": "",
+          "email2": ""
+        }
+      },
+      "1557842355143": {
+        "type": "email-cta",
+        "settings": {
+          "banner": "Emails &",
+          "title": "Unlike paper newsletters, our email newsletters are eco-friendly.",
+          "sentence": "Recycle your email address for 15% off your first order."
+        }
+      },
+      "announcement": {
+        "type": "announcement",
+        "settings": {
+          "hide": false,
+          "message": "Free Shipping on all US Orders"
+        }
+      },
+      "navigation": {
+        "type": "navigation",
+        "blocks": {
+          "1557909147108": {
+            "type": "large-link",
+            "settings": {
+              "title": "Home",
+              "link-url": "\/"
+            }
+          },
+          "1557909159224": {
+            "type": "large-link",
+            "settings": {
+              "title": "Shop",
+              "link-url": "shopify:\/\/collections\/sparkling"
+            }
+          },
+          "1559099854472": {
+            "type": "large-link",
+            "settings": {
+              "title": "Story",
+              "link-url": "shopify:\/\/pages\/story"
+            }
+          },
+          "1557909173097": {
+            "type": "small-link",
+            "settings": {
+              "title": "FAQ",
+              "link-url": "shopify:\/\/pages\/faqs"
+            }
+          },
+          "1557909185100": {
+            "type": "small-link",
+            "settings": {
+              "title": "Contact",
+              "link-url": "shopify:\/\/pages\/contact"
+            }
+          }
+        },
+        "block_order": [
+          "1557909147108",
+          "1557909159224",
+          "1559099854472",
+          "1557909173097",
+          "1557909185100"
+        ],
+        "settings": {
+          "cta-label": "Buy Now",
+          "cta-url": "shopify:\/\/collections\/sparkling",
+          "show-cart": true,
+          "bottle-label1": "Shop Still Water",
+          "bottle-video1": "still_turntable_new.mp4",
+          "bg-color1": "#6ab2e1",
+          "bottle-link1": "shopify:\/\/collections\/still",
+          "bottle-label2": "Shop Sparkling Water",
+          "bottle-video2": "sparkling_turntable_new.mp4",
+          "bg-color2": "#e9faff",
+          "bottle-link2": "shopify:\/\/collections\/sparkling",
+          "bottle-scale": 0
+        }
+      },
+      "newsletter-popup": {
+        "type": "newsletter-popup",
+        "settings": {
+          "hide": false,
+          "message": "Sign up for emails.",
+          "submessage": "Recycle your email address for a 15% discount off your first order.",
+          "success-message": "Thanks for signing up."
+        }
+      },
+      "story-why": {
+        "type": "story-why",
+        "settings": {
+          "title": "But Why?",
+          "paragraph": "The bad part–the tough part–is that it doesn’t just disappear. Nearly 91% of plastic waste will never be recycled. Meaning it’s just hanging about, lollygagging in our oceans and landfills, taking up valuable space, killing precious marine life.\nWe think there’s a way to enjoy a convenient, revitalizing bottle of water without having to face all of the harmful environmental repercussions. Not to mention the sleepless nights wrought with guilt.",
+          "image": "shopify:\/\/shop_images\/junk1.png"
+        }
+      },
+      "story-whom": {
+        "type": "story-whom",
+        "settings": {
+          "title": "By Whom?",
+          "paragraph": "Founded by the team that brought you Vita Coco Coconut Water and RUNA, Ever & Ever is a new aluminum bottle-canned water that is easily and infinitely recyclable when placed in the correct recycling bins. Which means it’ll always be in use, in some shape or form, never to be caught dead lying around in a landfill or ocean. Second only to reusable water bottles (which we are big, big fans of), it is the perfect disposable water bottle for the office, home, transit, and handbag.\nAluminum chugs along on a beautiful, never-ending path, here long before us, and here long after us. We’re happy to be along for just a tiny stretch of its long and varied journey.",
+          "image": "shopify:\/\/shop_images\/052819_shot07_004.jpg"
+        }
+      },
+      "story-intro": {
+        "type": "story-intro",
+        "settings": {
+          "paragraph": "Do you remember the last bottle of water you drank? Or the one before that? Chances are you don’t. Grabbing, drinking, and disposing of a bottle of water may be the smallest and most insignificant part of your day, just one among many other things you grab and use and dispose of, ridding it from your life and memory entirely.",
+          "bottle-image": "shopify:\/\/shop_images\/Ever_and_Ever_Sparkling_Render_WITH_Shadow_FINAL.png",
+          "bottle-offset": 0,
+          "bottle-scale": -14
+        }
+      },
+      "shipping": {
+        "type": "shipping",
+        "settings": {
+          "text": "Free Shipping Anywhere in the USA"
+        }
+      }
+    },
+    "content_for_index": [
+      "1557828501967",
+      "1557829923697",
+      "1557830296811",
+      "1557830312995",
+      "1557830447074",
+      "1557842355143"
+    ]
+  },
+  "presets": {
+    "Default": {}
+  }
+}

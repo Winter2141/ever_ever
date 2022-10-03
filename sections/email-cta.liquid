@@ -1,0 +1,47 @@
+{% schema %}
+  {
+    "name": "Email CTA",
+    "settings": [
+      {
+        "id": "banner",
+        "type": "text",
+        "label": "Banner Text",
+        "default": "Emails &"
+      },
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title"
+      },
+      {
+        "id": "sentence",
+        "type": "textarea",
+        "label": "Intro sentence"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Email CTA",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}
+
+{% assign banner = section.settings.banner %}
+{% include "banner" %}
+
+<div class="section u-bgSkyBlue u-vPad180">
+  <div class="section__inner">
+    <div class="g-span6 g-offset2 u-hPad60 u-mhPad0">
+      <div class="u-mb40">
+        <h2 class="t-sectionTitle t-sectionTitleSmall u-mb20">{{ section.settings.title }}</h2>
+        <p class="t-body t-center">{{ section.settings.sentence }}</p>
+      </div>
+      {% assign newsletter_class = "newsletterForm--large" %}
+      {% assign newsletter_color = "skyBlue" %}
+      {% assign newsletter_id = "home-cta" %}
+      {% include 'newsletter' %}
+    </div>
+  </div>
+</div>

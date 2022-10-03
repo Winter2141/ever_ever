@@ -1,0 +1,51 @@
+{% schema %}
+  {
+    "name": "Story Why",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Heading"
+      },
+      {
+        "id": "paragraph",
+        "type": "textarea",
+        "label": "Paragraph"
+      },
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}
+
+
+<div class="section u-bgSkyBlue u-vPad160">
+  <div class="image image--whale image--cover">
+    <div class="image__inner" style="background-image: url({{ section.settings.image | img_url: '800x' }})"></div>
+  </div>
+  <div class="section__inner">
+    <div class="g-span4">
+      <div class="u-vPad40 u-borderTop u-borderWhite">
+        <h2 class="t-sectionTitle">{{ section.settings.title }}</h2>
+      </div>
+      {% assign bits = section.settings.paragraph | newline_to_br | split: "<br />" %}
+      {% for bit in bits %}
+        {% if bit.size > 1  %}
+          {% if forloop.first == true %}
+            <div class="u-vPad25 u-borderTop u-borderWhite {% if forloop.last == true %} u-borderBottom {% endif %}">
+              {% assign dropcap = bit | slice: 0 %}
+              <p class="t-body"><span class="t-dropcap">{{ dropcap }}</span>{{ bit | remove_first: dropcap}}</p>
+            </div>
+          {% else %}
+            <div class="u-vPad25 u-borderTop u-borderWhite {% if forloop.last == true %} u-borderBottom {% endif %}">
+              <p class="t-body">{{ bit }}</p>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

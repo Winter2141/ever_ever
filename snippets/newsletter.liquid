@@ -1,0 +1,38 @@
+<form id="email_signup-{{newsletter_id}}" class="klaviyo_styling klaviyo_standard_embed_Pep62N newsletterForm {{newsletter_class}}" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-
+lists.com/ajax/subscriptions/subscribe" method="GET"
+target="_blank" novalidate="novalidate">
+  <input type="hidden" name="g" value="Pep62N">
+  <div class="newsletterForm__inner klaviyo_field_group">
+    <input class="newsletterForm__email" type="email" value="" name="email" id="k_id_email" placeholder="Enter your email"/>
+    <div class="klaviyo_form_actions newsletterForm__submitWrap water water--{{newsletter_color}}">
+      <div class="water__inner"></div>
+      <button type="submit" class="klaviyo_submit_button newsletterForm__submit">Enter</button>
+    </div>
+  </div>
+  <div class="error_message newsletterForm__error" style="display:none;"></div>
+
+  <div class="klaviyo_messages newsletterForm__messages">
+    <div class="success_message" style="display:none;">
+      <p class="newsletterForm__success" >Thanks! Check your email for a confirmation.</p>
+    </div>
+  </div>
+
+</form>
+
+<script type="text/javascript">
+ KlaviyoSubscribe.attachToForms('#email_signup-{{newsletter_id}}', {
+   hide_form_on_success: true,
+   custom_success_message: true,
+   extra_properties: {
+     $source: '$embed',
+     $method_type: "Klaviyo Form",
+     $method_id: '{{newsletter_id}}',
+     success: function () {
+       gtag('event', 'conversion', {
+        'allow_custom_scripts': true,
+        'send_to': 'DC-8444036/btnclick/emailbtn+standard'
+       });
+     }
+   }
+ });
+</script>

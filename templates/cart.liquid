@@ -1,0 +1,38 @@
+<div class="section u-vPad120 u-bgMainBlue cartPage">
+  <div class="section__inner">
+    <div class="g-span4 g-offset3">
+      <div class="cartPage__inner">
+        {%- include 'cart-inner' -%}
+      </div>
+
+      <p class="t-faqHeading u-mb30 u-hPad30">Subtotal : <span class="cart-subtotal">{{ cart.total_price | money }}</span></p>
+      <div class="cartPage__cta u-hPad30 u-flex">
+        {% if cart.item_count > 0 %}
+          <a class="button u-marginAuto water u-mr30" href="/checkout" id="cart-page-cta">
+            <span class="water__inner"></span>
+            <span class="button__inner">Check out</span>
+          </a>
+        {% endif %}
+        <a class="button u-marginAuto water" href="/collections/sparkling">
+          <span class="water__inner"></span>
+          <span class="button__inner">Continue Shopping</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'subscription-cart-footer-custom' %}
+{% assign cart_has_subscription_item = 'false' %}
+{% for i in cart.items %}
+	{% for p in i.properties %}
+		{% if p.first == 'shipping_interval_frequency' %}
+			{% assign cart_has_subscription_item = 'true' %}
+		{% endif %}
+	{% endfor %}
+{% endfor %}
+{%- if cart_has_subscription_item == 'true' -%}
+  <script>
+    document.getElementById('cart-page-cta').href = reChargeBuildCheckoutURL();
+  </script>
+{%- endif -%}

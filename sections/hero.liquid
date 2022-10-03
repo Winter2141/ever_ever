@@ -1,0 +1,93 @@
+{% schema %}
+  {
+    "name": "Hero",
+    "settings": [
+      {
+        "id": "blurb",
+        "type": "textarea",
+        "label": "Intro Paragraph"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<script>
+
+  function SM(name, count){
+    this.name = name;
+    this.loaded = 0;
+    this.total = count;
+    this.ready = false;
+    var imgs = [];
+    for (var i = 0; i < count; i++){
+      imgs.push(null);
+    }
+    this.imgs = imgs;
+  }
+
+  function hsLoad(){
+    var el = this;
+    var name = el.getAttribute('data-name');
+    var index = el.getAttribute('data-index');
+    hs[name].loaded++;
+    hs[name].imgs[index-1] = el;
+    if (hs[name].loaded >= hs[name].total){
+      hs[name].ready = true;
+      if (!heroInit){
+        var frameRate = 160;
+        var frames = 5;
+        var cycle = ["sparkling", "swan", "still", "water", "sparkling", "helmet", "still", "wheel"];
+        setTimeout(function(){
+          initStopMotion(hs, cycle, frames, frameRate, 'hero-canvas');
+        }, 500);
+        heroInit = true;
+      }
+    }
+  }
+
+  var count = 5;
+  var ready = 0;
+  var names = 6;
+  var heroInit = false;
+
+  var hs = {};
+  var img;
+  {% assign names = "sparkling|swan|still|water|helmet|wheel" | split: "|" %}
+  {% for name in names %}
+    hs['{{name}}'] = new SM('{{name}}', count);
+    {% for i in (1..5) %}
+      img = new Image();
+      img.setAttribute('data-name', '{{name}}');
+      img.setAttribute('data-index', {{i}});
+      img.onload = hsLoad.bind(img);
+      {%- assign src = name | append: i | append: ".png" -%}
+      img.src = "{{ src | asset_url }}";
+    {% endfor %}
+  {% endfor %}
+
+</script>
+
+
+<div class="hero">
+  <div class="section hero__top u-bgMainBlue">
+    <div class="section__inner">
+      <h1 class="hero__text">Hello Again</h1>
+    </div>
+  </div>
+  <div class="section hero__bottom u-bgLightBlue t-colorMainBlue">
+    <div class="section__inner">
+      <div class="g-span5 u-vPad15 u-borderMainBlue u-borderTop u-borderBottom">
+        {% assign dropcap = section.settings.blurb | slice: 0 %}
+        <p class="t-bodyLarge"><span class="t-dropcapLarge">{{ dropcap }}</span>{{section.settings.blurb | remove_first: dropcap}}</p>
+      </div>
+    </div>
+  </div>
+  <canvas class="hero__image" id="hero-canvas"></canvas>
+
+</div>

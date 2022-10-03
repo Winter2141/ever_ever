@@ -1,0 +1,17 @@
+<p class="rtxn_customer_portal_login" style="display: none;">
+  <a href="/apps/retextion/login/">Manage Subscriptions</a>
+</p>
+
+<script>
+  function checkShowCustomerPortalStatus() {
+    fetch('https://api.retextion.com/api/shopify/storefront/is-customer-portal-enabled?shop=allmarketinc.myshopify.com').then(response => response.json()).then(data => {
+      if(data.customerPortalEnabled) {
+        document.querySelector('.rtxn_customer_portal_login').style.display = "block";
+      }
+    })
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    checkShowCustomerPortalStatus();
+  })
+</script>

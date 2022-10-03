@@ -1,0 +1,164 @@
+{% schema %}
+  {
+    "name": "Aluminum",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "id": "banner",
+        "type": "text",
+        "label": "Banner Text",
+        "default": "Aluminum &"
+      },
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title"
+      },
+      {
+        "id": "paragraph",
+        "type": "textarea",
+        "label": "Paragraph"
+      },
+      {
+        "id": "link-label",
+        "type": "text",
+        "label": "Link Label"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "fact",
+        "name": "Aluminum Fact",
+        "settings": [
+          {
+            "id": "fact-icon",
+            "type": "image_picker",
+            "label": "Fact Icon"
+          },
+          {
+            "id": "fact-text",
+            "type": "textarea",
+            "label": "Fact Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Aluminum",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}
+
+{% assign banner = section.settings.banner %}
+{% include "banner" %}
+
+
+<script>
+
+  function SM(name, count){
+    this.name = name;
+    this.loaded = 0;
+    this.total = count;
+    this.ready = false;
+    var imgs = [];
+    for (var i = 0; i < count; i++){
+      imgs.push(null);
+    }
+    this.imgs = imgs;
+  }
+
+  function msLoad(){
+    var el = this;
+    var name = el.getAttribute('data-name');
+    var index = el.getAttribute('data-index');
+    ms.loaded++;
+    ms.imgs[index-1] = el;
+    if (ms.loaded >= ms.total){
+      ms.ready = true;
+      if (!meltInit){
+        setTimeout(function(){
+          initScrollMotion(ms,'melt-canvas');
+        })
+        meltInit = true;
+      }
+    }
+  }
+
+  var ms = new SM('melt', 8);
+  var meltInit = false;
+  var img;
+
+  {% assign name = "melt" %}
+  {% for i in (1..8) %}
+    img = new Image();
+    img.setAttribute('data-name', '{{name}}');
+    img.setAttribute('data-index', {{i}});
+    img.onload = msLoad.bind(img);
+    {%- assign src = name | append: i | append: ".png" -%}
+    img.src = "{{ src | asset_url }}";
+  {% endfor %}
+
+
+
+
+
+</script>
+
+<div class="section u-bgLightBlue u-vPad160">
+  <div class="image image--cleanCan">
+    <canvas class="image__inner" id="melt-canvas"></canvas>
+  </div>
+  <div class="section__inner t-colorMainBlue">
+    <div class="g-span4 g-offset5">
+      <div class="u-vPad40 u-borderTop u-borderMainBlue">
+        <h2 class="t-sectionTitle">{{section.settings.title}}</h2>
+      </div>
+      <div class="u-vPad25 u-borderTop u-mb40" id="add-more">
+        {% assign bits = section.settings.paragraph | newline_to_br | split: "<br />" %}
+        {% for bit in bits %}
+          {% if forloop.first == true %}
+            {% assign dropcap = bit | slice: 0 %}
+            <p class="t-bodyLarge u-borderBottom u-borderMainBlue" style="margin-bottom: -1px; padding-bottom: 3rem;">
+              <span class="t-dropcapHuge">{{ dropcap }}</span>{{bit | remove_first: dropcap}}
+            </p>
+          {% else %}
+            <div class="accordion accordion--slim">
+              <div class="accordion__content">
+                <div class="accordion__contentInner">
+                  <p class="t-bodyLarge">{{bit}}</p>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+      </div>
+
+      <div class="t-center u-mb10">
+        <a class="button button--mainBlue water water--mainBlue u-marginAuto" id="click-more">
+          <span class="water__inner"></span>
+          <span class="button__inner">{{section.settings.link-label}}</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="section u-bgSkyBlue u-vPad70">
+  <div class="u-hPad60 u-flex facts">
+    {% for block in section.blocks %}
+      <div class="u-hPad60 t-center facts__fact">
+        <div class="image image--illust u-marginAuto u-mb20">
+          <div class="image__circle"></div>
+          <div class="image__inner" style="background-image: url({{ block.settings.fact-icon | img_url: '400x' }})"></div>
+        </div>
+        <p class="t-body t-center t-lh12">{{ block.settings.fact-text }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>

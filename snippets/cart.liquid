@@ -1,0 +1,19 @@
+<div class="cart" id="cart" data-count="{{cart.item_count}}">
+  <div class="cart__close" id="close-cart">
+    Close Cart
+  </div>
+  {%- include 'cart-inner' -%}
+  <div class="cart__info" id="cart-info">
+    <p>Subtotal : <span class="cart-subtotal">{{ cart.total_price | money }}</span></p>
+  </div>
+  <div class="cart__cta">
+    {% if cart.item_count > 0 %}
+      <a href="/checkout" class="no-barba" id="cart-cta">Check out</button>
+    {% else %}
+      <a href="/collections/sparkling" id="cart-cta">Shop All Products</button>
+    {% endif %}
+  </div>
+
+</div>
+
+{% include 'subscription-cart-footer-custom' %}

@@ -1,0 +1,58 @@
+<div class="cart__inner {% if cart.item_count == 0 %} cart__inner--empty{% endif %}">
+  {% if cart.item_count > 0 %}
+    {% for item in cart.items %}
+
+      {% assign recurringchecked = "false" %}
+      {% for p in item.properties  %}
+        {% if p.first == 'shipping_interval_frequency' %}
+          {% assign frequency = p.last %}
+          {% assign recurringchecked = "true" %}
+        {% endif %}
+        {% if p.first == 'shipping_interval_unit_type' %}
+          {% if frequency == '1'%}
+            {% if p.last == 'Days' %}
+              {% assign frequency_unit = 'Day' %}
+            {% elsif p.last == 'Months'%}
+              {% assign frequency_unit = 'Month' %}
+            {% elsif p.last == 'Weeks'%}
+              {% assign frequency_unit = 'Week' %}
+            {% endif %}
+          {% else %}
+            {% assign frequency_unit = p.last %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      <div class="cart__item {% if recurringchecked == 'true' %}recurring{% endif %}" data-cart-key="{{item.key}}" data-cart-quantity="{{ item.quantity }}">
+        <div class="cart__itemImage">
+          <img class="cart__itemImg" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+        </div>
+        <div class="cart__itemInfo">
+          <p class="cart__itemTitle">{{ item.product.title }}</p>
+          <p class="cart__itemSubtext">{{ item.product.metafields.description.size }}</p>
+
+          
+          {% if recurringchecked == "true" %}
+            <p class="cart__itemSubtext">Deliver every {{frequency}} {{frequency_unit}} - {{ item.price | money }}
+          {%- else -%}
+            <!-- Start Retextion Cart Line Item -->
+            {% if item.selling_plan_allocation == empty %}
+              <p class="cart__itemSubtext">One-time purchase - {{ item.price | money }}</p>
+            {% else %}
+              <p class="cart__itemSubtext" data-cart-item-selling-plan-name> {{ item.selling_plan_allocation.selling_plan.name }} - {{ item.price | money }}</p>
+            {% endif %}
+            <!-- End Retextion Cart Line Item -->
+          {% endif %}
+
+          <div class="number number--noBorder">
+            <span class="number__label">QTY</span>
+            <span class="number__inc number__minus cart-decrease" data-cart-decrease="{{item.key}}"></span>
+            <input class="number__input" min="0" type="number" value="{{ item.quantity }}" data-price="{{item.price}}"/>
+            <span class="number__inc number__plus cart-increase" data-cart-increase="{{item.key}}"></span>
+          </div>
+        </div>
+        <div class="cart__itemRemove cart-remove" data-cart-remove="{{item.key}}"></div>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>

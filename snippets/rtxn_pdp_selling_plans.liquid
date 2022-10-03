@@ -1,0 +1,249 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant | default: product.variants.first
+  assign current_selling_plan_allocation = current_variant.selected_selling_plan_allocation
+
+  if current_selling_plan_allocation == nil and current_variant.requires_selling_plan
+  assign current_selling_plan_allocation = current_variant.selling_plan_allocations | first
+  endif
+
+  assign offer = current_selling_plan_allocation | default: current_variant
+-%}
+
+{% assign first_selling_plan_allocation = product.variants.first.selling_plan_allocations[0] %}
+
+{% if product.selling_plan_groups[0].name %}
+<input type="hidden" name="selling_plan" value="{{ current_selling_plan_allocation.selling_plan.id | default: '' }}">
+<div class="rtx_widget_injection_parent" style="display: none;">
+  <div class="rtx_container" data-product='{{ product | json }}'>
+    {% unless product.requires_selling_plan %}
+      <div class="rtx_option rtx_option--onetime option--active">
+        <div class="rtx_option_selector">
+          <input type="radio" value="onetime" name="selling_plan_select" id="product_onetime" checked>
+          <label for="product_onetime" class="rtx_option_label">
+            <div class="rtx_option_heading">
+              One-time purchase
+            </div>
+            <div class="rtx_option_subheading">
+              {{ product.price | money }}
+            </div>
+          </label>
+        </div>
+      </div>
+    {% endunless %}
+
+    {% for group in product.selling_plan_groups %}
+    <div class="rtx_option rtx_option--sub">
+      <div class="rtx_option_selector">
+        <input type="radio" value="subsave" name="selling_plan_select" id="product_subsave">
+        <label for="product_subsave" class="rtx_option_label">
+          <div class="rtx_option_heading">
+            {{ group.name}}
+          </div>
+          <div class="rtx_option_subheading">
+            {{ first_selling_plan_allocation.price | money }}
+          </div>
+        </label>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="rtx_option_plans" style="display: none;">
+    <span class="rc_label__delivery">Deliver every</span>
+    {% for group in product.selling_plan_groups %}
+      <select name="rtx_option_plans_dropdown" id="rtx_option_plans_dropdown">
+        {% for selling_plan in group.selling_plans %}
+          <option value="{{selling_plan.id}}">{{selling_plan.name}}</option>
+        {% endfor %}
+      </select>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .rtx_widget_injection_parent {
+    margin-bottom: 15px;
+  }
+  .rtx_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    /* -ms-flex-wrap: wrap;
+    flex-wrap: wrap; */
+    flex-flow: column nowrap;
+  }
+  .rtx_option {
+    flex-basis: calc(50% - 0.4rem);
+    position: relative;
+    /* border: 1.5px solid #000; */
+    /* border-radius: 4px; */
+    text-align: center;
+    font-size: .75rem;
+    letter-spacing: .0196972px;
+    /* margin-bottom: 15px; */
+  }
+  .rtx_option.option--active {
+    background-color: #fff;
+    color: #6c6b6b;
+  }
+  .rtx_option_selector input {
+    display: none;
+  }
+  .rtx_option_plans {
+    width: 100%;
+    margin-top: 0px;
+    background-color: rgb(255, 255, 255);
+    padding: 5px 20px 10px;
+    align-items: center;
+  }
+  .rtx_option_plans .rc_label__delivery {
+    color: #444;
+    margin-right: 10px;
+  }
+  .rtx_option_plans select {
+    font-size: 1.8rem;
+    /* width: 100%; */
+    flex: auto;
+    border-color: rgba(108,107,107,.5);
+    background-color: transparent;
+    color: #444;
+    line-height: 1.2;
+    padding: 10px 20px;
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg width="23" height="10" viewBox="0 0 23 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.08789 1L11.0879 9L21.0879 1" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 10px);
+    background-position-y: 50%;
+    background-size: 20px 8px;
+    padding-right: 40px;
+  }
+  .rtx_option_label {
+    display: flex;
+    padding: 1.5rem;
+  }
+  .rtx_option_heading {
+    font-size: 2rem;
+    letter-spacing: .29px;
+    text-transform: uppercase;
+  }
+  .rtx_option_subheading {
+    font-size: 2rem;
+  }
+  .rtx_widget_injection_parent .rtx_container .rtx_option .rtx_option_selector {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+  .rtx_widget_injection_parent .rtx_container .rtx_option .rtx_option_selector input[type=radio] {
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0 7px 0 0;
+    font: inherit;
+    width: 11px;
+    height: 11px;
+    color: #56AADA;
+    border: 1px solid #56AADA;
+    border-radius: 50%;
+    transition: border .2s ease;
+  }
+  .rtx_widget_injection_parent .rtx_container .rtx_option .rtx_option_selector input[type=radio]:checked {
+    border: 4px solid #56AADA;
+  }
+  .rtx_widget_injection_parent .rtx_container .rtx_option .rtx_option_selector .rtx_option_label {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 0;
+    margin-bottom: 0;
+    width: 100%;
+  }
+  .rtx_widget_injection_parent .rtx_container .rtx_option .rtx_option_selector .rtx_option_label .rtx_option_heading,
+  .rtx_widget_injection_parent .rtx_container .rtx_option .rtx_option_selector .rtx_option_label .rtx_option_subheading {
+    text-transform: capitalize;
+    display: inline-block;
+  }
+  .rtx_widget_injection_parent .rtx_container .rtx_option {
+    background-color: transparent;
+    text-align: left;
+    border: 0;
+    padding: 1.5rem 3rem 1.5rem 1rem;
+  }
+  .rtx_option.option--active {
+    background-color: #fff !important;
+  }
+  .rtx_widget_injection_parent .rtx_container .rtx_option.rtx_option--onetime {
+    margin-bottom: 7px;
+  }
+</style>
+
+<script>
+  function checkShowStatus() {
+    fetch('https://dev-api.retextion.com/api/shopify/storefront/is-enabled?shop=kate-development-retextion.myshopify.com').then(response => response.json()).then(data => {
+      if(data.storefrontEnabled) {
+        document.querySelector('.rtx_widget_injection_parent').style.display = "block";
+        $('.rtx_widget_injection_parent').css('display', 'block');
+      }
+    })
+  }
+  function setSellingPlan() {
+    var selectedOption = document.querySelector('input[name="selling_plan_select"]:checked');
+    if(selectedOption.value === 'onetime') {
+      document.querySelector('input[name="selling_plan"]').value = ''
+      document.querySelectorAll('.rtx_option_plans').forEach(plans => {
+        plans.style.display = "none"
+      })
+    } else {
+      var productData = JSON.parse(document.querySelector('.rtx_container').getAttribute('data-product'))
+      console.log(productData)
+      var sellingPlanId = document.querySelector('#rtx_option_plans_dropdown').value
+      var locale = window.Shopify.locale || "en"
+      var currency = window.Shopify.currency.active || "USD"
+      var matchingAllocation = productData.variants[0].selling_plan_allocations.find(selling_plan => selling_plan.selling_plan_id == sellingPlanId)
+      console.log(matchingAllocation)
+      var money = new Intl.NumberFormat(locale, {style: "currency", currency}).format(matchingAllocation.price / 100)
+      console.log(money)
+      document.querySelector('.rtx_option--sub .rtx_option_subheading').textContent = money
+      document.querySelector('input[name="selling_plan"]').value = document.querySelector('#rtx_option_plans_dropdown').value
+      document.querySelectorAll('.rtx_option_plans').forEach(plans => {
+        plans.style.display = "flex"
+      })
+    }
+  }
+
+  document.querySelector('#rtx_option_plans_dropdown').addEventListener('change', function(e) {
+    setSellingPlan();
+  })
+
+  var inputs = document.querySelectorAll('input[name="selling_plan_select"]').forEach(rbi => {
+    rbi.addEventListener('change', function(e) {
+      var selected = document.querySelector('input[name="selling_plan_select"]:checked')
+      document.querySelectorAll('.rtx_option').forEach(option => {
+        option.classList.remove('option--active')
+      })
+      selected.closest('.rtx_option').classList.add('option--active')
+      if(selected.value === 'onetime') {
+        document.querySelectorAll('.rtx_option_plans').forEach(plans => {
+          plans.style.display = "none"
+        })
+      } else {
+        document.querySelectorAll('.rtx_option_plans').forEach(plans => {
+          plans.style.display = "flex"
+        })
+      }
+      setSellingPlan()
+    })
+  })
+
+  document.addEventListener("DOMContentLoaded", function() {
+  	checkShowStatus();
+  })
+</script>
+{% endif %}

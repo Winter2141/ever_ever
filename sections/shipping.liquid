@@ -1,0 +1,14 @@
+{% schema %}
+  {
+    "name": "Shipping text",
+    "settings": [
+      {
+        "id": "text",
+        "type": "text",
+        "label": "Shipping text"
+      }
+    ]
+  }
+{% endschema %}
+
+<p class="productPage__shipping">{{ section.settings.text }}</p>

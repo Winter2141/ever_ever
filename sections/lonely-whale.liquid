@@ -1,0 +1,73 @@
+{% schema %}
+  {
+    "name": "Lonely Whale",
+    "settings": [
+      {
+        "id": "banner",
+        "type": "text",
+        "label": "Banner Text",
+        "default": "Moral Compass &"
+      },
+      {
+        "id": "paragraph",
+        "type": "textarea",
+        "label": "Paragraph"
+      },
+      {
+        "id": "logo",
+        "type": "image_picker",
+        "label": "Logo"
+      },
+      {
+        "id": "link-label",
+        "type": "text",
+        "label": "Link Label"
+      },
+      {
+        "id": "link-url",
+        "type": "url",
+        "label": "Link URL"
+      },
+      {
+        "id": "video",
+        "type": "text",
+        "label": "Video Filename (needs to be contained in /assets folder)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Lonely Whale",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}
+
+{% assign banner = section.settings.banner %}
+{% include "banner" %}
+
+<div class="section u-bgAltBlue u-vPad100">
+  <div class="image image--whale image--cover">
+    <video class="image__inner" src="{{ section.settings.video | asset_url }}" autoplay loop playsinline muted></video>
+  </div>
+  <div class="section__inner">
+    <div class="g-span4">
+      <div class="u-vPad25 u-borderTop u-borderWhite">
+        {% assign dropcap = section.settings.paragraph | slice: 0 %}
+        <p class="t-body"><span class="t-dropcap">{{ dropcap }}</span>{{section.settings.paragraph | remove_first: dropcap}}</p>
+      </div>
+      <div class="u-vPad40 u-borderTop u-borderBottom u-borderWhite u-mb40">
+        <div class="image image--lw">
+          <!-- <div class="image__inner" style="background-image: url({{ section.settings.logo | img_url: '1400x' }})"></div> -->
+          <div class="image__inner" style="background-image: url({{ 'LonelyWhaleWhite.png' | asset_url }})"></div>
+        </div>
+      </div>
+      <div class="t-center u-mb10">
+        <a class="button u-marginAuto water" href="{{ section.settings.link-url }}">
+          <span class="water__inner"></span>
+          <span class="button__inner">{{ section.settings.link-label }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

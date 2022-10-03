@@ -1,0 +1,191 @@
+{% schema %}
+  {
+    "name": "Navigation",
+    "settings": [
+      {
+        "id": "cta-label",
+        "type": "text",
+        "label": "CTA Label"
+      },
+      {
+        "id": "cta-url",
+        "type": "url",
+        "label": "CTA URL"
+      },
+      {
+        "id": "show-cart",
+        "type": "checkbox",
+        "label": "Show cart?"
+      },
+      {
+        "id": "bottle-label1",
+        "type": "text",
+        "label": "Product Link Label 1"
+      },
+      {
+        "id": "bottle-video1",
+        "type": "text",
+        "label": "Video Filename (needs to be contained in /assets folder)"
+      },
+      {
+        "id": "bg-color1",
+        "type": "color",
+        "label": "Product Link BG Color 1"
+      },
+      {
+        "id": "bottle-link1",
+        "type": "url",
+        "label": "Product Link URL 1"
+      },
+      {
+        "id": "bottle-label2",
+        "type": "text",
+        "label": "Product Link Label 2"
+      },
+      {
+        "id": "bottle-video2",
+        "type": "text",
+        "label": "Video Filename (needs to be contained in /assets folder)"
+      },
+      {
+        "id": "bg-color2",
+        "type": "color",
+        "label": "Product Link BG Color 2"
+      },
+      {
+        "id": "bottle-link2",
+        "type": "url",
+        "label": "Product Link URL 2"
+      },
+      {
+        "id": "bottle-scale",
+        "type": "range",
+        "min": -50,
+        "max": 50,
+        "step": 1,
+        "unit": "%",
+        "label": "Bottle Scale",
+        "default": 0
+      }
+    ],
+    "blocks": [
+      {
+        "type": "large-link",
+        "name": "Large Link",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Link Label"
+          },
+          {
+            "id": "link-url",
+            "type": "url",
+            "label": "Link URL"
+          }
+        ]
+      },
+      {
+        "type": "small-link",
+        "name": "Small Link",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Link Label"
+          },
+          {
+            "id": "link-url",
+            "type": "url",
+            "label": "Link URL"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+<nav class="nav nav--top" id="nav">
+  <div class="nav__bar">
+    <div class="nav__right">
+      <a href="{{ section.settings.cta-url }}" class="nav__button u-hideMobile water">
+        <span class="water__inner"></span>
+        <span class="nav__buttonInner">{{ section.settings.cta-label }}</span>
+      </a>
+      {% if section.settings.show-cart == true %}
+        <a class="nav__cart water" id="cart-toggle">
+          <span class="water__inner"></span>
+          <svg width="28px" height="24px" viewBox="0 0 28 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g class="fill" transform="translate(-1512.000000, -47.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                      <g transform="translate(1512.000000, 47.000000)">
+                          <path d="M23.8985893,21.1871467 C23.8985893,22.13456 23.1273211,22.90528 22.1792994,22.90528 C21.2313311,22.90528 20.4600628,22.13456 20.4600628,21.1871467 C20.4600628,20.2397333 21.2313311,19.46896 22.1792994,19.46896 C23.1273211,19.46896 23.8985893,20.2397333 23.8985893,21.1871467 Z M10.899421,21.1871467 C10.899421,22.13456 10.1281527,22.90528 9.18013099,22.90528 C8.23210931,22.90528 7.4608944,22.13456 7.4608944,21.1871467 C7.4608944,20.2397333 8.23210931,19.46896 9.18013099,19.46896 C10.1281527,19.46896 10.899421,20.2397333 10.899421,21.1871467 Z M6.15024002,6.56757333 L25.2420114,8.46122667 L23.2894518,14.62032 L7.9598279,14.62032 L6.15024002,6.56757333 Z M5.6291056,4.24858666 L15.9273408,5.21023999 L25.9751219,6.14842666 L25.5714495,7.42197333 L5.9038419,5.47120001 L5.6291056,4.24858666 Z M27.1286087,5.38426666 C27.0394849,5.24986666 26.894165,5.16298666 26.7334752,5.14794665 L5.38180024,3.15418666 L4.75643893,0.41472 C4.70104339,0.172106667 4.48511814,0 4.23610502,0 L0.533675798,0 C0.238980023,0 0,0.238826667 0,0.533333335 C0,0.827893334 0.238980023,1.06666667 0.533675798,1.06666667 L3.81049856,1.06666667 L4.42673401,3.76597334 C4.42673401,3.76602665 4.42678738,3.76608 4.42678738,3.76613335 L4.94690781,6.08080001 C4.94696118,6.08095999 4.94696118,6.08106665 4.94701455,6.08122666 L7.0120197,15.2705067 C7.06672145,15.5139733 7.28302025,15.6869867 7.53272717,15.6869867 L22.9513148,15.6869867 L22.0904957,18.4022933 L9.18013099,18.4022933 C7.64362499,18.4022933 6.39354281,19.6515733 6.39354281,21.1871467 C6.39354281,22.7226667 7.64362499,23.9719467 9.18013099,23.9719467 C10.7166904,23.9719467 11.9667725,22.7226667 11.9667725,21.1871467 C11.9667725,20.5391467 11.743536,19.9426133 11.3707634,19.46896 L19.9887737,19.46896 C19.6159478,19.9426133 19.3927112,20.5391467 19.3927112,21.1871467 C19.3927112,22.7226667 20.6427934,23.9719467 22.1792994,23.9719467 C23.7158587,23.9719467 24.9659409,22.7226667 24.9659409,21.1871467 C24.9659409,19.99424 24.2113233,18.9744533 23.1542717,18.5786133 L27.1925964,5.84005334 C27.2413211,5.68624001 27.217786,5.51872001 27.1286087,5.38426666 Z"></path>
+                      </g>
+                  </g>
+              </g>
+          </svg>
+
+        </a>
+        <span class="nav__cartIndicator {% if cart.item_count > 0 %}show{% endif %}" id="cart-indicator">{{cart.item_count}}</span>
+      {% endif %}
+    </div>
+    <div class="nav__menu menu">
+      <div class="menu__shade" id="menu-shade"></div>
+      <div class="menu__list">
+        <div class="menu__listInner">
+          <ul class="menu__options menu__options--large u-mb60">
+            {% for block in section.blocks %}
+              {% if block.type == "large-link" %}
+                <li><a class="t-hoverUnderline t-hoverUnderline--thick" href="{{ block.settings.link-url }}">{{ block.settings.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <ul class="menu__options menu__options--small u-mb60">
+            {% for block in section.blocks %}
+              {% if block.type == "small-link" %}
+                <li><a class="t-hoverUnderline t-hoverUnderline--medium"  href="{{ block.settings.link-url }}">{{ block.settings.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          {% include "social-links" %}
+        </div>
+      </div>
+      {% assign scale = section.settings.bottle-scale | divided_by: 100.0 | plus: 1.0 %}
+      <div class="menu__features">
+
+        <div class="menu__feature" style="background-color: {{ section.settings.bg-color1 }} ">
+          <div class="menu__featureImage image">
+            <video class="image__inner u-hideMobile"  src="{{ section.settings.bottle-video1 | asset_url}}" style="transform: scale({{scale}})" loop muted></video>
+            <div class="image__inner u-showMobile" style="background-image: url({{ 'still_turntable_poster.png' | asset_url}})"></div>
+          </div>
+          {% assign tp1 = section.settings.bg-color1 | color_to_rgb | replace: ")", ", 0)" %}
+          <!-- <div class="menu__featureGrad menu__featureGrad" style="background: linear-gradient(0deg, {{section.settings.bg-color1}} 10%, {{tp1}} 25%, {{tp1}} 85%, {{section.settings.bg-color1}} 100%)"></div>
+          <div class="menu__featureGrad menu__featureGrad" style="background: linear-gradient(90deg, {{section.settings.bg-color1}} 15%, {{tp1}} 25%, {{tp1}} 75%, {{section.settings.bg-color1}} 85%)"></div> -->
+          <p class="menu__featureTitle t-hoverUnderline t-hoverUnderline--medium">{{section.settings.bottle-label1}}</p>
+          <a class="menu__featureLink" href="{{ section.settings.bottle-link1 }}"></a>
+        </div>
+
+        <div class="menu__feature" style="background-color: {{ section.settings.bg-color2 }} ">
+          <div class="menu__featureImage image">
+            <video class="image__inner u-hideMobile" src="{{ section.settings.bottle-video2 | asset_url}}" style="transform: scale({{scale}})" loop muted></video>
+            <div class="image__inner u-showMobile" style="background-image: url({{ 'sparkling_turntable_poster.png' | asset_url}})"></div>
+          </div>
+          {% assign tp2 = section.settings.bg-color2 | color_to_rgb | replace: ")", ", 0)" %}
+          <!-- <div class="menu__featureGrad menu__featureGrad" style="background: linear-gradient(0deg, {{section.settings.bg-color2}} 10%, {{tp1}} 25%, {{tp2}} 85%, {{section.settings.bg-color2}} 100%)"></div>
+          <div class="menu__featureGrad menu__featureGrad" style="background: linear-gradient(90deg, {{section.settings.bg-color2}} 15%, {{tp1}} 25%, {{tp2}} 75%, {{section.settings.bg-color2}} 85%)"></div> -->
+          <p class="menu__featureTitle t-hoverUnderline t-hoverUnderline--medium  t-hoverUnderline--blue">{{section.settings.bottle-label2}}</p>
+          <a class="menu__featureLink" href="{{ section.settings.bottle-link2 }}"></a>
+        </div>
+
+      </div>
+    </div>
+    <div class="nav__left">
+      <button class="nav__toggle" id="menu-toggle"></button>
+      <a href="/" class="nav__brand">{% include "svg-logo" %}</a>
+    </div>
+  </div>
+
+  {% if section.settings.show-cart == true %}
+    {% include 'cart' %}
+  {% endif %}
+</nav>
